@@ -1,0 +1,52 @@
+[guides.setup.docker]
+image = "..."
+
+[[guides.setup.docker.steps]]
+title = "Run a Docker container to generate logs"
+description = """\
+First, let's make sure we have a Docker container generating logs. For this \
+guide we'll use of the `chentex/random-logger image`:
+
+```bash
+$ docker run -d chentex/random-logger:latest
+test
+```
+"""
+
+[[guides.setup.docker.steps]]
+title = "Verify log generation"
+description = """\
+Let's verify that logs are, in fact, being generated:
+
+```bash
+$ docker logs $(docker ps | grep 'chentex/random-logger' | awk)
+yay
+```
+
+Great! You can see that logs are being generated in an interval.
+"""
+
+[[guides.setup.docker.steps]]
+title = "Collect your Docker logs"
+description = """\
+Now let's collet the logs. Keep in mind, this tutorial is following the \
+"dedicated logging container" strategy.
+
+```bash
+$ docker run --name="vector" \
+--volume=/var/run/docker.sock:/var/run/docker.sock \
+timberio/vector \
+'docker | console'
+```
+
+Let's break this command down:
+
+<Alert icon={false} type="info">
+
+* `--volume` passed the Docker socket to the Vector container for log access.
+* `timberio/vector` is the official Vector Docker image.
+* `docker | console` tells Vector to collect logs from Docker and print them
+  to `STDOUT`.
+
+</Alert>
+"""

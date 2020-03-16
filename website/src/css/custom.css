@@ -1028,10 +1028,13 @@ ol li.list--li--pink {
   }
 }
 .navbar .navbar__items--right {
-  flex: 0 0 40%;
+  flex: 0 0 45%;
 }
 .navbar .navbar__items--right .react-toggle {
   margin-left: var(--ifm-navbar-item-padding-horizontal);
+}
+.navbar .navbar__item {
+  white-space: nowrap;
 }
 .navbar .navbar__item .badge {
   border-color: var(--ifm-background-color) !important;
@@ -1277,7 +1280,7 @@ div.section-list > .section:hover > h3 > .hash-link,
 div.section-list > .section:hover > h4 > .hash-link,
 div.section-list > .section:hover > h5 > .hash-link,
 div.section-list > .section:hover > h6 > .hash-link {
-  opacity: 1; 
+  opacity: 1;
 }
 div.section-list > .section > .sub__title {
   margin-top: -0.4em;

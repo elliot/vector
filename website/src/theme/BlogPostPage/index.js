@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Avatar from '@site/src/components/Avatar';
-import BlogPostTags from '@site/src/components/BlogPostTags';
 import Layout from '@theme/Layout';
 import BlogPostItem from '@theme/BlogPostItem';
 import BlogPostPaginator from '@theme/BlogPostPaginator';
 import MailingListForm from '@site/src/components/MailingListForm';
 import MDXComponents from '@theme/MDXComponents';
 import {MDXProvider} from '@mdx-js/react';
+import Tags from '@site/src/components/Tags';
 
 import classnames from 'classnames';
 import dateFormat from 'dateformat';
@@ -39,7 +39,7 @@ function BlogPostPage(props) {
             <Avatar github={author_github} size="lg" nameSuffix={<> / <time pubdate="pubdate" dateTime={date.toISOString()}>{dateFormat(date, "mmm dS")}</time> / {readingStats.text}</>} rel="author" subTitle={false} vertical={true} />
             <h1>{title}</h1>
             <div className={styles.headerTags}>
-              <BlogPostTags tags={tags} />
+              <Tags tags={tags} />
             </div>
           </div>
         </header>

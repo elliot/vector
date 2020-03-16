@@ -1,7 +1,7 @@
-[guides.docker_dedicated_logging_container]
+[guides.docker]
 image = "..."
 
-[[guides.docker_dedicated_logging_container.steps]]
+[[guides.docker.steps]]
 title = "Run a Docker container to generate logs"
 description = """\
 First, let's make sure we have a Docker container generating logs. For this \
@@ -13,7 +13,7 @@ test
 ```
 """
 
-[[guides.docker_dedicated_logging_container.steps]]
+[[guides.docker.steps]]
 title = "Verify log generation"
 description = """\
 Let's verify that logs are, in fact, being generated:
@@ -26,7 +26,7 @@ yay
 Great! You can see that logs are being generated in an interval.
 """
 
-[[guides.docker_dedicated_logging_container.steps]]
+[[guides.docker.steps]]
 title = "Collect your Docker logs"
 description = """\
 Now let's collet the logs. Keep in mind, this tutorial is following the \
@@ -43,7 +43,7 @@ Let's break this command down:
 
 <Alert icon={false} type="info">
 
-* `--volumn` passed the Docker socket to the Vector container for log access.
+* `--volume` passed the Docker socket to the Vector container for log access.
 * `timberio/vector` is the official Vector Docker image.
 * `docker | console` tells Vector to collect logs from Docker and print them
   to `STDOUT`.

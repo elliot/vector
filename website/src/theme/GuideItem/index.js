@@ -13,13 +13,13 @@ import readingTime from 'reading-time';
 
 import './styles.css';
 
-function BlogPostItem(props) {
+function GuideItem(props) {
   const {
     children,
     frontMatter,
     metadata,
     truncated,
-    isBlogPostPage = false,
+    isGuidePage = false,
   } = props;
   const {date: dateString, description, permalink, tags} = metadata;
   const {author_github, title} = frontMatter;
@@ -29,10 +29,10 @@ function BlogPostItem(props) {
   const domain = domainTag ? domainTag.value : null;
 
   return (
-    <Link to={permalink + '/'} className={classnames('blog-post-item', 'domain-bg', 'domain-bg--hover', `domain-bg--${domain}`)}>
+    <Link to={permalink + '/'} className={classnames('guide-item', 'domain-bg', 'domain-bg--hover', `domain-bg--${domain}`)}>
       <article>
         <h2>{title}</h2>
-        <div className="blog-post-item--subtitle">{description}</div>
+        <div className="guide-item--subtitle">{description}</div>
         <Avatar github={author_github} size="sm" subTitle={<><time pubdate="pubdate" dateTime={date.toISOString()}>{dateFormat(date, "mmm dS")}</time> / {readingStats.text}</>} rel="author" />
         <Tags tags={tags} />
       </article>
@@ -40,4 +40,4 @@ function BlogPostItem(props) {
   );
 }
 
-export default BlogPostItem;
+export default GuideItem;
