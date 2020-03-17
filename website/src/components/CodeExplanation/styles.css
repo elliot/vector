@@ -1,0 +1,40 @@
+.code-explanation {
+  background: rgba( var(--ifm-color-primary-rgb), 0.15 ) !important;
+  border-bottom-left-radius: var(--ifm-global-radius);
+  border-bottom-right-radius: var(--ifm-global-radius);
+  color: var(--ifm-color-primary);
+  font-size: 0.9em;
+  font-weight: 500;
+  margin-top: calc( ( var(--ifm-spacing-vertical) * -1 ) - 7px );
+  padding: var(--ifm-pre-padding) var(--ifm-pre-padding) calc(var(--ifm-pre-padding) / 3) var(--ifm-pre-padding);
+}
+
+.code-explanation--expanded a,
+.code-explanation--expanded code {
+  color: var(--ifm-color-primary);
+}
+
+.code-explanation--expanded code {
+  background-color: rgba( var(--ifm-color-primary-rgb), 0.15 );
+}
+
+.code-explanation--expanded > ul {
+  list-style: disc;
+  margin-bottom: calc(var(--ifm-pre-padding) / 3);
+  padding-left: var(--ifm-pre-padding);
+}
+
+.code-explanation--expanded > .code-explanation--toggle {
+  border-top: 1px dotted var(--ifm-color-primary);
+  padding-top: calc(var(--ifm-pre-padding) / 3);
+}
+
+.code-explanation--collapsed {
+  padding-top: calc(var(--ifm-pre-padding) / 3);
+}
+
+.code-explanation--toggle {
+  color: var(--ifm-color-primary);
+  cursor: pointer;
+  font-size: 0.9em;
+}

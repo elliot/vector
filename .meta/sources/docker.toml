@@ -16,9 +16,9 @@ for more info.
 service_name = "Docker API"
 through_description = "the [Docker engine daemon][urls.docker_daemon]"
 features = [
-  "Collect Docker logs.",
+  "Collect Docker container logs.",
   "Filter which containers you collect them from.",
-  "Automatically merge partial log events.",
+  "Automatically merge logs that Docker splits.",
   "Enrich your logs with Docker context."
 ]
 

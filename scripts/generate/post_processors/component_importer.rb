@@ -10,6 +10,7 @@ module PostProcessors
     IMPORTS = {
       'Accordion' => "import Accordion from '@site/src/components/Accordion';",
       'Alert' => "import Alert from '@site/src/components/Alert';",
+      'CodeExplanation' => "import CodeExplanation from '@site/src/components/CodeExplanation';",
       'CodeHeader' => "import CodeHeader from '@site/src/components/CodeHeader';",
       'Diagram' => "import Diagram from '@site/src/components/Diagram';",
       'Fields' => "import Fields from '@site/src/components/Fields';",

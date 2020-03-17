@@ -394,21 +394,26 @@ class Templates
     content
   end
 
-  def setup_guide_header(source: nil, sink: nil)
+  def setup_guide(id, tutorial, source: nil, sink: nil)
     if source.nil? && sink.nil?
       raise ArgumentError.new("You must supply at least a source or a sink")
     end
 
-    id =
-      if source && sink
-        "setup/sources/#{source.name}/#{sink.name}"
-      elsif source
-        "setup/sources/#{source.name}"
-      elsif sink
-        "setup/sinks/#{sink.name}"
-      end
+    features = []
 
-    render("#{partials_path}/_setup_guide_header.md", binding).strip
+    if source
+      features += source.features
+    else
+      features << "Collect your logs from one or more sources"
+    end
+
+    if sink
+      features += sink.features
+    else
+      features << "Send your logs to one or more destinations"
+    end
+
+    render("#{partials_path}/_setup_guide.md", binding).strip
   end
 
   def sink_description(sink)

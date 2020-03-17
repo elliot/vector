@@ -1,33 +1,41 @@
 [[<%= namespace %>]]
 type = "text"
-title = "Send Logs to AWS S3"
-description = """\
-Now that we have Vector up and running, let's send the logs to S3.\
-"""
-
-[[<%= namespace %>.steps]]
-type = "text"
 title = "Ensure Vector has write permission to your S3 bucket"
 description = """\
-Depending on how you're deploying Vector, you'll want to make sure Vector \
-has write access to your AWS S3 bucket. Setting up AWS permissions is covered \
-in a separate guide. Fortunately, Vector implements healthchecks, and will \
-verify access before starting.\
+In order for Vector to successfully write data to your S3 bucket, you'll need \
+to make sure Vector is using the appropriate AWS IAM credentials that grant \
+it access. If you've been using AWS, you'll likely know how to do this, but if \
+you're new to AWS you'll want to checkout our [AWS authentication guide]().\
 """
 
-[[<%= namespace %>.steps]]
+[[<%= namespace %>]]
 type = "text"
 title = "Add the `aws_s3` sink to your `vector.toml` file"
 description = """\
 ```bash
-echo '...' > vector.toml
+echo '
+[sinks.aws_s3]
+  inputs = ["in"]
+  type = "aws_s3"
+  bucket = "my-bucket-name"
+  compression = "gzip"
+  region = "us-east-1"
+  key_prefix = "date=%F/"
+  batch.max_size = 10490000
+  batch.timeout_secs = 300
+  encoding.codec = "ndjson"
+' >> vector.toml
 ```
 
-Now start Vector like you did previously:
+<CodeExplanation>
 
-```bash
-start_vector
-```
+* The above command _appends_ to your previously created `vector.toml` file.
+* The `compression` option gzips the contents to save on storage costs.
+* The `key_prefix` option partitions your data by date.
+* The `batch.*` options control the file size and age on S3.
+* The `encoding.codec` tells Vector how to encode the data before writing it.
 
-Tada! You've successfully sent $source logs to S3.
+</CodeExplanation>
+
+That's it! Let's start Vector:
 """

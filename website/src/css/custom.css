@@ -1362,9 +1362,12 @@ div.section-list.section-list--hover > .section:hover {
   padding: 0.2em 0.35em;
   text-align: center;
 }
+.sections > li a.hash-link {
+  padding-right: 3em;
+}
 .sections > li > ol {
   font-size: 0.95em;
-  margin-top: calc(var(--ifm-spacing-vertical) * 3 );
+  margin-top: calc(var(--ifm-spacing-vertical) * 2 );
 }
 .sections.sections--h3 > li:before {
   font-size: var(--ifm-h3-font-size);
@@ -1383,7 +1386,7 @@ div.section-list.section-list--hover > .section:hover {
   color: var(--ifm-heading-color);
   content: "•";
   font-size: var(--ifm-h4-font-size);
-  margin: -0.2em 0 0 -2.45em;
+  margin: -0.6em 0 0 -2.45em;
 }
 .sections.sections--h3 > li > ol > li > h4 {
   margin-bottom: var(--ifm-spacing-vertical);

@@ -1,5 +1,3 @@
-<%= setup_guide_header(source: metadata.sources.docker) %>
-
-## A Step-By-Step Tutorial
-
-<%= tutorial_steps(metadata.tutorials.setup.sources.docker.steps, heading_depth: 3) %>
+<%- source = metadata.sources.docker -%>
+<%- tutorial = metadata.tutorials.setup.sources.docker -%>
+<%= setup_guide("setup/sources/docker", tutorial, source: source) %>
