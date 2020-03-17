@@ -13,6 +13,7 @@ require_relative "metadata/release"
 require_relative "metadata/source"
 require_relative "metadata/streaming_sink"
 require_relative "metadata/transform"
+require_relative "metadata/tutorial"
 
 # Object representation of the /.meta directory
 #
@@ -137,7 +138,8 @@ class Metadata
     :sinks,
     :sources,
     :team,
-    :transforms
+    :transforms,
+    :tutorials
 
   def initialize(hash, docs_root, pages_root)
     @data_model = DataModel.new(hash.fetch("data_model"))
@@ -148,6 +150,7 @@ class Metadata
     @sources = OpenStruct.new()
     @transforms = OpenStruct.new()
     @tests = Field.new(hash.fetch("tests").merge({"name" => "tests"}))
+    @tutorials = hash.fetch("tutorials").to_struct_with_name(Tutorial, should_have_keys: ["steps"])
 
     # domains
 

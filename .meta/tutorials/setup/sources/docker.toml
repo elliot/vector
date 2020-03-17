@@ -1,0 +1,7 @@
+[tutorials.setup.sources.docker]
+image = "..."
+
+<%= render("_partials/tutorials/setup/sources/_docker_steps.toml", namespace: "tutorials.setup.sources.docker.steps") %>
+
+<%= render("_partials/tutorials/setup/sources/_docker_steps.toml", namespace: "tutorials.setup.sources.docker.tutorials.aws_s3.steps") %>
+<%= render("_partials/tutorials/setup/sinks/_aws_s3_steps.toml", namespace: "tutorials.setup.sources.docker.tutorials.aws_s3.steps") %>

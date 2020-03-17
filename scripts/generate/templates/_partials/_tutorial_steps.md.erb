@@ -1,0 +1,15 @@
+<ol className="sections sections--h<%= heading_depth %>">
+<%- steps.each do |step| -%>
+<li>
+
+<%= "#" * heading_depth %> <%= step.title %>
+
+<%= step.description %>
+
+<%- if step.steps.any? -%>
+<%= tutorial_steps(step.steps, heading_depth: heading_depth + 1) %>
+<%- end -%>
+
+</li>
+<%- end -%>
+</ol>

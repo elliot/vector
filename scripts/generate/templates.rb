@@ -394,6 +394,23 @@ class Templates
     content
   end
 
+  def setup_guide_header(source: nil, sink: nil)
+    if source.nil? && sink.nil?
+      raise ArgumentError.new("You must supply at least a source or a sink")
+    end
+
+    id =
+      if source && sink
+        "setup/sources/#{source.name}/#{sink.name}"
+      elsif source
+        "setup/sources/#{source.name}"
+      elsif sink
+        "setup/sinks/#{sink.name}"
+      end
+
+    render("#{partials_path}/_setup_guide_header.md", binding).strip
+  end
+
   def sink_description(sink)
     strip <<~EOF
     #{write_verb_link(sink)} #{event_type_links(sink.input_types).to_sentence} events to #{sink.write_to_description}.
@@ -437,6 +454,10 @@ class Templates
 
   def tags(tags)
     tags.collect { |tag| "`#{tag}`" }.join(" ")
+  end
+
+  def tutorial_steps(steps, heading_depth: 3)
+    render("#{partials_path}/_tutorial_steps.md", binding).strip
   end
 
   def transform_description(transform)

@@ -154,7 +154,6 @@ module.exports = {
     ],
   ],
   plugins: [
-    path.resolve(__dirname, './plugins/components'),
     path.resolve(__dirname, './plugins/guides'),
   ],
   scripts: [],
