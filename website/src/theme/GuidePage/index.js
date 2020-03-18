@@ -8,6 +8,7 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import MDXComponents from '@theme/MDXComponents';
 import {MDXProvider} from '@mdx-js/react';
+import Tags from '@site/src/components/Tags';
 
 import classnames from 'classnames';
 import dateFormat from 'dateformat';
@@ -55,8 +56,8 @@ function Headings({headings, isChild}) {
 function GuidePage(props) {
   const {content: GuideContents} = props;
   const {frontMatter, metadata} = GuideContents;
-  const {id, title} = frontMatter;
-  const {date: dateString, keywords} = metadata;
+  const {category, id, title} = frontMatter;
+  const {date: dateString, tags} = metadata;
   const readingStats = readingTime(GuideContents.toString());
   const date = new Date(Date.parse(dateString));
 
@@ -73,7 +74,8 @@ function GuidePage(props) {
             </a>
           </div>
           <h1>{title}</h1>
-          <p>Written, with <i className="feather icon-heart"></i>, by the <Link to="/community/#team">Vector team</Link></p>
+          <div className={styles.credit}>Written, with <i className="feather icon-heart"></i>, by the <Link to="/community/#team">Vector team</Link>, last updated March 22, 2020</div>
+          <Tags tags={tags} />
         </div>
       </header>
       <main className="container container--narrow margin-vert--xl">

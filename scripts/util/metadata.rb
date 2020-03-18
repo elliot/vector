@@ -39,11 +39,11 @@ class Metadata
   end
 
   class << self
-    def load!(meta_dir, docs_root, pages_root)
+    def load!(meta_dir, docs_root, guides_root, pages_root)
       metadata = load_metadata!(meta_dir)
       json_schema = load_json_schema!(meta_dir)
       validate_schema!(json_schema, metadata)
-      new(metadata, docs_root, pages_root)
+      new(metadata, docs_root, guides_root, pages_root)
     end
 
     private
@@ -141,7 +141,7 @@ class Metadata
     :transforms,
     :tutorials
 
-  def initialize(hash, docs_root, pages_root)
+  def initialize(hash, docs_root, guides_root, pages_root)
     @data_model = DataModel.new(hash.fetch("data_model"))
     @installation = OpenStruct.new()
     @options = hash.fetch("options").to_struct_with_name(Field)
@@ -239,7 +239,7 @@ class Metadata
 
     # links
 
-    @links = Links.new(hash.fetch("links"), docs_root, pages_root)
+    @links = Links.new(hash.fetch("links"), docs_root, guides_root, pages_root)
 
     # env vars
 
